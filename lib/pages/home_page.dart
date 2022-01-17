@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors
+import 'dart:async';
 
 class HomePage extends StatelessWidget {
 
@@ -9,9 +11,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Catelog App"),
+        title: Text("Catelog App"),
       ),
-      drawer: const Drawer(),
+      drawer: Drawer(),
       body: Center(
         child: Container(
           child: Text('Welcome $days People from $name'),

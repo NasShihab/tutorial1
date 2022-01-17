@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial1/utils/routes.dart';
+// ignore_for_file: prefer_const_constructors
+import 'dart:async';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  String name = "";
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -9,25 +19,28 @@ class LoginPage extends StatelessWidget {
         child: Column(
           children: [
             Image.asset("assets/images/login_image.png"),
-            const SizedBox(
+             SizedBox(
               height: 20,
             ),
-            const Text(
-              "Welcome",
-              style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+            Text(
+              "Welcome $name",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
+             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
               child: Column(
-                children: const [
+                children: [
                   TextField(
                     decoration: InputDecoration(
                       hintText: "Enter UserName",
                       labelText: "Username",
                     ),
+                    onChanged: (value){
+                      name = value;
+                    },
                   ),
                   TextField(
                     obscureText: true,
@@ -39,13 +52,16 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
+             SizedBox(
               height: 40,
             ),
             ElevatedButton(
-              child: const Text("Login", style: TextStyle(fontWeight: FontWeight.bold),),
+              child: Text(
+                "Login",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               style: TextButton.styleFrom(
-                minimumSize: const Size(150, 40),
+                minimumSize: Size(150, 40),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, MyRoutes.homeRoute);
